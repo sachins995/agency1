@@ -58,6 +58,15 @@ app.post("/details", (req, res) => {
       return res.json(data);
     });
   });
+  app.delete("/data", (req, res) => {
+    const CustomerNo = req.params.Number;
+    const q = "DELETE FROM customer_data ";
+
+    db.query(q, [CustomerNo], (err, data) => {
+      if (err) return res.send(err);
+      return res.json(data);
+    });
+  });
   
   app.put("/update/:Number", (req, res) => {
     const CustomerNo = req.params.Number;
